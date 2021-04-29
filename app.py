@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
-
+app.config['JSON_AS_ASCII'] = False
 
 @app.route('/')
 def hello_world():
@@ -15,6 +15,7 @@ def cars():
     '''
     # 인승
     people = request.args.get('people')
+    people = int(people)
     # 바디 타입
     body_type = request.args.get('body-type')
     # 환경 보호
