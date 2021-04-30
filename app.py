@@ -38,9 +38,7 @@ def cars():
 
     # 추천 리스트 받아오기
     result = model.return_recommendations(people, body_type, environmental_protection, fuel_economy, boycott_in_japan, patriotic_campaign, vegan)
-
-    #return jsonify({"people": people, "body_type": body_type, "environmental_protection": environmental_protection, "fuel_economy": fuel_economy, "boycott_in_japan": boycott_in_japan, "patriotic_campaign": patriotic_campaign, "vegan": vegan})
-    return jsonify({"result": result.values.tolist()})
+    return jsonify(result)
 
 
 if __name__ == '__main__':

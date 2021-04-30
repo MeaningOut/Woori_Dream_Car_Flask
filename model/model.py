@@ -192,11 +192,11 @@ class Model:
         recommendations = result_data[['id', 'min_price', 'max_price']]
 
         # 평균 price 추가 and min_price&max_price 삭제
-        recommendations['price'] = (recommendations['min_price'] + recommendations['max_price']) / 2
+        recommendations['avg_price'] = (recommendations['min_price'] + recommendations['max_price']) / 2
         recommendations = recommendations.drop(['min_price', 'max_price'], axis=1)
 
         sim = [i['cosine'] for i in result if i['cosine'] >= 0.65]
-        recommendations['sim'] = sim
+        recommendations['similarity'] = sim
 
         return recommendations
 
@@ -218,5 +218,15 @@ def return_recommendations(people, body_type, e_protection, f_economy, boycott, 
     car_df = model.make_candidate(people, body_type)
     recommendations = model.get_recommendations(car_df, e_protection, f_economy, boycott, patriotic, vegan)
 
-    # 리턴 : DataFrame(id, min_price, max_price, sim)
-    return recommendations
+    # 리턴 : DataFrame(id, price, sim)
+    # id는 -1빼고 리턴할 것이다.
+    # 리턴 자료형 : 리스트, {"id", "avg_price", "similarity"}
+    expected_recommendations = []
+    for i in recommendations.values.tolist():
+        expected_recommendations.append({"id": int(i[0]-1), "avg_price": i[1], "similarity": i[2]})
+
+    # debug
+    print('size : ', len(expected_recommendations))
+    print(expected_recommendations)
+
+    return expected_recommendations
