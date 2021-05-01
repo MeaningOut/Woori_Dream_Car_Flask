@@ -221,8 +221,11 @@ def return_recommendations(people, body_type, e_protection, f_economy, boycott, 
     # 리턴 : DataFrame(id, price, sim)
     # id는 -1빼고 리턴할 것이다.
     # 리턴 자료형 : 리스트, {"id", "avg_price", "similarity"}
+    N = 100     # 리턴 갯수 제한 : 100개
     expected_recommendations = []
-    for i in recommendations.values.tolist():
+    for idx, i in enumerate(recommendations.values.tolist()):
+        if idx >= N:
+            break
         expected_recommendations.append({"id": int(i[0]-1), "avg_price": i[1], "similarity": i[2]})
 
     # debug
