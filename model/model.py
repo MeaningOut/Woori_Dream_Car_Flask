@@ -232,7 +232,7 @@ def return_recommendations(people, body_type, e_protection, f_economy, boycott, 
     for idx, i in enumerate(recommendations.values.tolist()):
         if idx >= N:
             break
-        expected_recommendations.append({"id": int(i[0]-1), "avg_price": i[1], "similarity": i[2]})
+        expected_recommendations.append({"id": int(i[0]+1), "avg_price": i[1], "similarity": i[2]})
 
     # debug
     print('size : ', len(expected_recommendations))
