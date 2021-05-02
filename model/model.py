@@ -192,7 +192,7 @@ class Model:
 
         # 디버그 - id, big_title, sub_title
         for i in indices:
-            print(result_data.loc[i]['id'], '  ', result_data.loc[i]['big_title'], ' ', result_data.loc[i]['sub_title'])
+            print(result_data.loc[i]['id']+1, '  ', result_data.loc[i]['big_title'], ' ', result_data.loc[i]['sub_title'])
 
         # 리턴값 정제
         recommendations = result_data[['id', 'min_price', 'max_price']]
