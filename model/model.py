@@ -190,6 +190,10 @@ class Model:
         indices = [i['id'] for i in result if i['cosine'] >= thresholds]
         result_data = self.metaData.loc[indices]
 
+        # 디버그 - id, big_title, sub_title
+        for i in indices:
+            print(result_data.loc[i]['id'], '  ', result_data.loc[i]['big_title'], ' ', result_data.loc[i]['sub_title'])
+
         # 리턴값 정제
         recommendations = result_data[['id', 'min_price', 'max_price']]
 
