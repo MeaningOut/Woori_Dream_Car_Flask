@@ -10,7 +10,6 @@ services:
       - web
   web:
     container_name: wooriFlask
-    image: wooriFlask
     build:
       context: .
       dockerfile: Dockerfile
