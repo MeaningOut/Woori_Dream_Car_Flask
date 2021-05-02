@@ -22,19 +22,19 @@ def cars():
     body_type = request.args.get('body-type')
 
     # 환경 보호
-    environmental_protection = request.args.get('environmetal-protection')
+    environmental_protection = request.args.get('e')
 
     # 연비 좋은 차
-    fuel_economy = request.args.get('fuel-economy')
+    fuel_economy = request.args.get('f')
 
     # 일본 불매
-    boycott_in_japan = request.args.get('boycott-in-japan')
+    boycott_in_japan = request.args.get('b')
 
     # 애국 캠페인
-    patriotic_campaign = request.args.get('patriotic-campaign')
+    patriotic_campaign = request.args.get('p')
 
     # 비건자동차
-    vegan = request.args.get('vegan')
+    vegan = request.args.get('v')
 
     # 추천 리스트 받아오기
     result = model.return_recommendations(people, body_type, environmental_protection, fuel_economy, boycott_in_japan, patriotic_campaign, vegan)
