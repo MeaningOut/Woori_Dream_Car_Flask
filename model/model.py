@@ -184,8 +184,10 @@ class Model:
         # 유사도 내림차순으로 정렬
         result = sorted(result, key=lambda x: x['cosine'], reverse=True)
 
-        # 기준치 0.65 이상인 것들만 추출
-        indices = [i['id'] for i in result if i['cosine'] >= 0.65]
+        # 기준치 0.86 이상인 것들만 추출
+        thresholds = 0.86
+
+        indices = [i['id'] for i in result if i['cosine'] >= thresholds]
         result_data = self.metaData.loc[indices]
 
         # 리턴값 정제
@@ -195,7 +197,7 @@ class Model:
         recommendations['avg_price'] = (recommendations['min_price'] + recommendations['max_price']) / 2
         recommendations = recommendations.drop(['min_price', 'max_price'], axis=1)
 
-        sim = [i['cosine'] for i in result if i['cosine'] >= 0.65]
+        sim = [i['cosine'] for i in result if i['cosine'] >= thresholds]
         recommendations['similarity'] = sim
 
         return recommendations
