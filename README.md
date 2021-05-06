@@ -5,6 +5,8 @@
 보통 추천시스템으로 Latent-Factor Model이나 Collaborative Filtering(협업필터링)를 사용하지만 user-to-item 데이터와 user 데이터를 확보하지 못하여
 Content-based Recommender System을 선택하였다. 
 
+![img.png](https://github.com/MeaningOut/Woori_Dream_Car_Flask/blob/master/picture1.PNG)
+
 <br><br>
 
 ## 1. Utility Matrix 구축하기
